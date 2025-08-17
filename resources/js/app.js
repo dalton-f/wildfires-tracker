@@ -19,9 +19,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const [lng, lat] = wildfire.geometry[0].coordinates;
     const title = wildfire.title;
+    const date = geometry.date;
 
     const marker = L.marker([lat, lng], { alt: title }).addTo(map);
-    marker.bindPopup(title);
+    marker.bindPopup(
+      `<strong>${title}</strong><br>${new Date(date).toLocaleString()}`
+    );
   }
 });
 
